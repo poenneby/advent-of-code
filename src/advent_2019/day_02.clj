@@ -7,7 +7,7 @@
 (def data (map edn/read-string (str/split (slurp "resources/advent_2019/day_2/input") #",")))
 
 (defn op-from [opcode]
-  (if (= 1 opcode) + *))
+  ({1 +, 2 *} opcode))
 
 (defn replace-at-position-with-operation [position operation value1 value2 input-list]
   (assoc input-list position (operation value1 value2)))

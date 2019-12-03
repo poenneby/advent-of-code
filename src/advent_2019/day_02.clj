@@ -28,3 +28,19 @@
 
 (calculate (restore-gravity (into [] (doall data))))
 
+(defn provide-inputs [data noun verb] 
+ (assoc (assoc data 1 noun) 2 verb))
+
+(calculate (provide-inputs (into [] (doall data)) 12 4))
+
+(loop [noun 1
+       verb 1]
+  (if (<= noun 99) 
+    (let [result (calculate (provide-inputs (into [] (doall data)) noun verb))]
+      (if (= 19690720 (first result))
+        (+ verb (* 100 noun))
+        (if (= verb 100) 
+          (recur (inc noun) 1)
+          (recur noun (inc verb)))))))
+
+

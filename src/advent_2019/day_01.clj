@@ -16,5 +16,5 @@
         sum
         (recur (+ sum f) (calculate-fuel f))))))
 
-(with-open [rdr (io/reader "resources/advent_2019/input")]
+(with-open [rdr (io/reader "resources/advent_2019/day_1/input")]
   (reduce + (map fuel-required-for (map edn/read-string (line-seq rdr)))))
